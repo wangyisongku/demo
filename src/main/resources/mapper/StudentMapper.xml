@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.study.demo.mapper.StudentInfoMapper" >
+
+    <select id="qryByCondition" resultType="com.study.demo.entry.StudentInfo" >
+        SELECT
+            S.ID AS id,
+            S.NAME AS name,
+            S.AGE AS age
+        FROM STUDY S
+        <where>
+            <if test="studentInfo != null">
+                <if test="studentInfo.name != null and studentInfo.name != ''">
+                    AND S.NAME LIKE '%'||#{studentInfo.name}||'%'
+                </if>
+                <if test="studentInfo.age != null ">
+                    AND S.AGE = #{studentInfo.age, jdbcType=INTEGER}
+                </if>
+            </if>
+        </where>
+    </select>
+
+</mapper>

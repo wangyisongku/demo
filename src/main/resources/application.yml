@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+#redis
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/wys?useUnicode=true&characterEncoding=UTF8&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+#MyBatis扫描mapper文件配置
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+
+logging.level:
+  level.root: debug
+  org.hibernate:
+    SQL: DEBUG
+    type.descriptor.sql.BasicBinder: TRACE
